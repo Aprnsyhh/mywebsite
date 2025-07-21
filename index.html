@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Rental - Mainan Game Terbaik di Kota Tangerang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003791;
+            --secondary: #f6f6f6;
+            --accent: #ff5a00;
+            --text: #333;
+            --light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 55, 145, 0.7), rgba(0, 55, 145, 0.7)), 
+                        url('https://i.imgur.com/sXDW2mE.jpeg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+            padding: 0 1rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--light);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e04b00;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .game-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 1.5rem;
+        }
+        
+        .game-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .consoles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .console-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .console-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .console-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .pricing-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card p {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .contact {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        footer {
+            background-color: var(--text);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .consoles {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .console-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <h1>PS Gaming Zone</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#games">Game</a></li>
+                <li><a href="#consoles">Konsol</a></li>
+                <li><a href="#pricing">Harga</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <h2>Sewa PlayStation Terbaik di Kota Tangerang</h2>
+        <p>Sensasi bermain game dengan grafis tinggi dan pengalaman gaming yang tak terlupakan. Tersedia berbagai game terbaru dan konsol PlayStation lengkap.</p>
+        <a href="#pricing" class="btn">Lihat Harga</a>
+    </section>
+    
+    <section id="games" class="container">
+        <h2 class="section-title">Game Populer</h2>
+        <div class="games">
+            <div class="game-card">
+                <img src="https://i.imgur.com/alqfEIk.jpeg" alt="Game FIFA 23 cover with football stadium scene">
+                <div class="game-info">
+                    <h3>FIFA 23</h3>
+                    <p>Pengalaman sepakbola terbaik dengan grafis ultra-realistik dan tim dari seluruh dunia.</p>
+                    
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://i.imgur.com/CHVTkkJ.jpeg" alt="God of War Ragnarök promotional art with Kratos and Atreus">
+                <div class="game-info">
+                    <h3>God of War Ragnarök</h3>
+                    <p>Petualangan epik Kratos dan Atreus dalam mitologi Norse.</p>
+                    
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://i.imgur.com/D1oZAWE.jpeg" alt="Spider-Man Miles Morales swinging through New York City">
+                <div class="game-info">
+                    <h3>Spider-Man: Miles Morales</h3>
+                    <p>Temukan kekuatan baru Miles Morales dalam kisah Spider-Man yang mendebarkan.</p>
+                    
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://i.imgur.com/KMqzDno.jpeg" alt="Horizon Forbidden West Aloy fighting robotic creatures">
+                <div class="game-info">
+                    <h3>Horizon Forbidden West</h3>
+                    <p>Jelajahi dunia pasca-apokaliptik yang menakjubkan dengan makhluk mesin yang menakutkan.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="consoles" class="container">
+        <h2 class="section-title">Konsol Tersedia</h2>
+        <div class="consoles">
+            <div class="console-card">
+                <i class="fas fa-tv"></i>
+                <h3>PlayStation 5</h3>
+                <p>Konsol generasi terbaru dengan SSD ultra cepat dan grafis 4K HDR.</p>
+            </div>
+            <div class="console-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>PlayStation 4 Pro</h3>
+                <p>Versi upgrade PS4 dengan performa grafis yang lebih baik.</p>
+            </div>
+            <div class="console-card">
+                <i class="fas fa-headset"></i>
+                <h3>Aksesoris Lengkap</h3>
+                <p>Tersedia DualSense, headset, dan VR untuk pengalaman bermain maksimal.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="container">
+        <h2 class="section-title">Harga Sewa</h2>
+        <div class="pricing">
+            <div class="pricing-card">
+                <h4>PS5 Vip</h4>
+                <p>Harga Paket</p>
+                <p>Rp40.000/Jam</p>
+            </div>
+            <div class="pricing-card">
+                <h4>PS4 Premium</h4>
+                <p>Harga Paket</p>
+                <p>Rp20.000/Jam</p>
+            </div>
+            <div class="pricing-card">
+                <h4>PS3 Pro</h4>
+                <p>Harga Paket</p>
+                <p>Rp10.000/Jam</p>
+            </div>
+            <div class="pricing-card">
+                <h4>PS2 Standar</h4>
+                <p>Harga Paket</p>
+                <p>Rp5.000/Jam</p>
+            </div>
+            <div class="pricing-card">
+                <h4>Paket Neflix</h4>
+                <p>Harga Paket</p>
+                <p>Rp50.000/Filem</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Kotak Saran</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email/WhatsApp</label>
+                        <input type="text" id="email" placeholder="Masukkan email atau nomor WhatsApp">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="4" placeholder="Tulis pesan Anda"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>PS Gaming Zone &copy; 2023 | Sewa PlayStation Terbaik di Kota Tangerang</p>
+        <p>Jl. Main Game No. 123, Kota Anda | Buka setiap hari 10:00 - 22:00</p>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple form validation
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const contact = document.getElementById('email').value;
+                
+                if (!name || !contact) {
+                    alert('Harap isi nama dan kontak (email/WhatsApp) Anda');
+                    return;
+                }
+                
+                alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
